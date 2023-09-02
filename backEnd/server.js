@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const app = require('./app');
 
+
+
 //connecting to database
 mongoose.connect('mongodb://127.0.0.1:27017/userManagement', {
     useNewUrlParser: true
@@ -10,6 +12,8 @@ mongoose.connect('mongodb://127.0.0.1:27017/userManagement', {
 }).catch((error) => {
     console.log('Some error has occured');
 });
+
+
   
 //server starting
 app.listen(3000, () => {
