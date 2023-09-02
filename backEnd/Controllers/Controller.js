@@ -1,18 +1,29 @@
 const User = require('../Models/userModel');
 
+
 //signup api
-exports.signup =async (req, res) => {
-    const user = await User.create(req.body);
+exports.signup =async(req, res) => {
+    console.log(req.body);
+    try{
+    const user =  await User.create(req.body);
     res.status(201).json({
         status: 'success',
         data: { user }
     });
+    }catch(err){
+        res.status(400).json({
+            status: 'fail',
+            message: err.message
+        });
+    }
 };
 
 exports.login =async (req, res) => {
+    
     const user = await User.findOne({email: req.body.email, password:req.body.password});
     //1-only active users can login
     //2-authentication
+     
     res.status(201).json({
         status: 'success',
         data: { user }
@@ -39,6 +50,7 @@ exports.login =async (req, res) => {
     }  */
 
 exports.userList=async (req, res) => {
+    
     const user = await User.find();
     res.status(201).json({
         status: 'success',
