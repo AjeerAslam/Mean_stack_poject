@@ -12,6 +12,18 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MaterialModule} from 'src/material.module';
 import {HttpClientModule} from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { FormsModule} from '@angular/forms';
+import {NgIf} from '@angular/common';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import { NavbarComponent } from './navbar/navbar.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+
 
 
 
@@ -22,7 +34,10 @@ import { ToastrModule } from 'ngx-toastr';
     RegistrationComponent,
     LoginComponent,
     UserListComponent,
-    HomeComponent
+    HomeComponent,
+    NavbarComponent,
+    AdminHomeComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +46,8 @@ import { ToastrModule } from 'ngx-toastr';
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatFormFieldModule, MatInputModule, FormsModule, NgIf,MatCardModule,MatIconModule,MatButtonModule,MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

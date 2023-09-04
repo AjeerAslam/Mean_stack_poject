@@ -3,7 +3,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { ToastrService } from 'ngx-toastr';
-import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -12,6 +11,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent {
+  password:any;
+ 
   constructor(private builder: FormBuilder, private service: AuthService, private router: Router,
     private toastr: ToastrService,private http:HttpClient) {
 
@@ -20,15 +21,10 @@ export class RegistrationComponent {
   registerform = this.builder.group({
     firstName: this.builder.control('', Validators.required),
     lastName: this.builder.control('', Validators.required),
-    email: this.builder.control('', Validators.required),
-    password: this.builder.control('', Validators.required),
-    phoneNo: this.builder.control('', Validators.required)
+    email: this.builder.control('', Validators.compose([Validators.required, Validators.email])),
+    password: this.builder.control('', Validators.compose([Validators.required, Validators.minLength(8)])),
+    phoneNo: this.builder.control('', Validators.compose([Validators.required, Validators.pattern('[789][0-9]{9}')])),
   });
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  };
   /*proceedregister() {
     const products={
       firstName:"ajeer",
@@ -44,16 +40,23 @@ export class RegistrationComponent {
     console.log("huuu");
 
   }*/
+  passwordValidation(event:any){
+    console.log(event);
+    const target = event.target as HTMLInputElement;
+    this.password = target.value;
+    if(this.password && this.password.length < 8){
+      this.toastr.warning('password length minmum is 8');
+    }
+  }
   proceedregister() {
     if (this.registerform.valid) {
       console.log(this.registerform.value);
-      this.service.registerUser(this.registerform.value).subscribe(result => {
+      this.service.registerUser(this.registerform.value).subscribe(()=> {
         this.toastr.success('Please contact admin for enable access.','Registered successfully')
-        //this.router.navigate(['login'])
+        this.router.navigate([''])
       });
     } else {
       this.toastr.warning('Please enter valid data.')
     }
   }
-
 }

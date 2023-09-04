@@ -1,0 +1,29 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <h2>Updation</h2>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="example-form" [formGroup]="registerform" (ngSubmit)="editUser()">
+            <mat-form-field class="example-full-width" >
+              <mat-label>First Name</mat-label>
+              <input  matInput formControlName="firstName" [value]="user?.data?.user[0]?.firstName">
+            </mat-form-field><br>
+            <mat-form-field class="example-full-width">
+                <mat-label>Last Name</mat-label>
+                <input matInput   formControlName="lastName" [value]="user?.data?.user[0]?.lastName"  >
+              </mat-form-field><br>
+              <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" [value]='user?.data?.user[0]?.email' >
+              </mat-form-field><br>
+              <mat-form-field class="example-full-width">
+                <mat-label>Phone No</mat-label>
+                <input matInput formControlName="phoneNo" [value]='user?.data?.user[0]?.phoneNo' >
+              </mat-form-field><br>
+              <div>
+                <button   mat-raised-button color="primary">Update</button>
+                
+              </div>
+          </form>
+    </mat-card-content>
+  </mat-card>

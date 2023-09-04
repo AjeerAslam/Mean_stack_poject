@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="example-card">
     <mat-card-header>
         <h2>Registeration</h2>
     </mat-card-header>
@@ -6,7 +6,7 @@
         <form class="example-form" [formGroup]="registerform" (ngSubmit)="proceedregister()">
             <mat-form-field class="example-full-width" >
               <mat-label>First Name</mat-label>
-              <input  matInput formControlName="firstName">
+              <input  matInput formControlName="firstName" onmouseout="">
             </mat-form-field><br>
             <mat-form-field class="example-full-width">
                 <mat-label>Last Name</mat-label>
@@ -14,7 +14,7 @@
               </mat-form-field><br>
               <mat-form-field class="example-full-width">
                 <mat-label>Password</mat-label>
-                <input type="password" matInput formControlName="password" >
+                <input type="password" matInput formControlName="password"  (mouseout)="passwordValidation($event)">
               </mat-form-field><br>
               <mat-form-field class="example-full-width">
                 <mat-label>Email</mat-label>
@@ -25,8 +25,8 @@
                 <input matInput formControlName="phoneNo" >
               </mat-form-field><br>
               <div>
-                <button mat-raised-button color="primary">Submit</button>
-                <a routerLink="/login" mat-raised-button color="accent">Back to Login</a>
+                <button mat-raised-button color="primary">Signup</button>
+                <a routerLink="/" mat-raised-button color="accent">Back to Login</a>
               </div>
           </form>
     </mat-card-content>

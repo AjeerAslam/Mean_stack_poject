@@ -19,15 +19,27 @@ exports.signup =async(req, res) => {
 };
 
 exports.login =async (req, res) => {
-    
+    try{
     const user = await User.findOne({email: req.body.email, password:req.body.password});
     //1-only active users can login
     //2-authentication
-     
-    res.status(201).json({
-        status: 'success',
-        data: { user }
-    });
+    if(user){
+        res.status(201).json({
+            status: 'success',
+            data: { user }
+        });
+    }else{
+        res.status(204).json({
+            status: 'success',
+            data: null
+        });
+    }
+    }catch(err){
+        res.status(400).json({
+            status: 'fail',
+            message: err.message
+        });
+    } 
 };
     /*if(!user){
         res.json({
@@ -52,6 +64,14 @@ exports.login =async (req, res) => {
 exports.userList=async (req, res) => {
     
     const user = await User.find();
+    res.status(201).json({
+        status: 'success',
+        data: { user }
+    });
+};
+exports.getUser=async (req, res) => {
+    
+    const user = await User.find({_id:req.params.id});
     res.status(201).json({
         status: 'success',
         data: { user }
@@ -89,6 +109,21 @@ exports.passwordReset =async (req, res) => {
     res.status(201).json({
         status: 'success',
         data: { updatedUser }
+    });
+};
+
+exports.filtering =async (req, res) => {
+    Regex = new RegExp(`^${req.params.key}`, 'i');
+    const Users = await User.find({
+        $or: [
+            { firstName: { $regex: Regex } },
+            { lastName: { $regex: Regex } },
+            { email: { $regex: Regex } }
+      ]
+    });
+    res.status(201).json({
+        status: 'success',
+        data: { Users }
     });
 };
 
