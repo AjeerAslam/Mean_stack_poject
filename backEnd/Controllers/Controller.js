@@ -1,6 +1,5 @@
 const User = require('../Models/userModel');
 
-
 //signup api
 exports.signup =async(req, res) => {
     console.log(req.body);
@@ -41,36 +40,17 @@ exports.login =async (req, res) => {
         });
     } 
 };
-    /*if(!user){
-        res.json({
-            status: 'fails',
-        });
-    }else{
-        if(!user.role){
-            res.json({
-                status: 'success',
-                role:'user',
-                data: { user }
-            });
-        }else{
-            res.json({
-                status: 'success',
-                role:'admin',
-                data: { user }
-            });
-        }      
-    }  */
-
+    
 exports.userList=async (req, res) => {
     
-    const user = await User.find();
+    const user = await User.find({role:'user'});
     res.status(201).json({
         status: 'success',
         data: { user }
     });
 };
+
 exports.getUser=async (req, res) => {
-    
     const user = await User.find({_id:req.params.id});
     res.status(201).json({
         status: 'success',

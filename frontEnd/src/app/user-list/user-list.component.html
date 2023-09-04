@@ -1,11 +1,22 @@
 <mat-card>
-    <mat-card-header>
-        <h2>User Listing</h2>
-    </mat-card-header>
+  <mat-card-header>
+    <h2>User Listing</h2>
+</mat-card-header>
+    <div class="container">
+      
     <mat-form-field class="example-form-field">
-      <mat-label>Filter</mat-label>
-      <input matInput type="text" (keyup)='filter($event)'>
+      <mat-label>Search here</mat-label>
+      <input matInput type="text"  (keyup)='filter($event,selected)'>
     </mat-form-field>
+    <mat-form-field class="dropDown">
+      <mat-label>FilterBy</mat-label>
+      <mat-select [(value)]="selected">
+        <mat-option value="firstName">firstName</mat-option>
+        <mat-option value="lastName">lastName</mat-option>
+        <mat-option value="email">email</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
     <mat-card-content>
         <div class="mat-elevation-z8">
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -43,7 +54,7 @@
                   <ng-container matColumnDef="approval">
                     <th mat-header-cell *matHeaderCellDef> approval </th>
                     <td mat-cell *matCellDef="let element">  
-                        <button (click)="approveUser(element._id)"  mat-raised-button color="primary">Approve</button>
+                        <button (click)="approveUser(element._id)" [disabled]="element.status == 'active'" mat-raised-button color="primary">Approve</button>
                     </td>
                   </ng-container>
                   <ng-container matColumnDef="delete">

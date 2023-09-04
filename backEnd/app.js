@@ -16,13 +16,12 @@ var cors = require('cors')
     next();
 });*/
 
-
+//middlewares
 app.use(cors())
 app.use(express.json());
-
 
 //routes
 app.use('/',Router);
 
-
+//exporting module to server.js
 module.exports = app;
