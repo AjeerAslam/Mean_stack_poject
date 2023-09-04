@@ -24,11 +24,10 @@ export class PasswordResetComponent {
   passwordValidation(event:any){
     const target = event.target as HTMLInputElement;
     this.password = target.value;
-    if(this.password && this.password.length < 8){
-      this.toastr.warning('password length minmum is 8');
+    if(this.password && !(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(this.password))){
+      this.toastr.warning('Password should be Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character');
     }
   }
-  
   
   resetPassword() {
     if (this.resetform.valid && this.resetform.value.password== this.resetform.value.confirmPassword) {
