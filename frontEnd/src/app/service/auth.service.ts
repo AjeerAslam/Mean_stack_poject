@@ -39,5 +39,4 @@ export class AuthService {
   passwordReset(id:any,inputdata:any){
     return this.http.patch(`http://localhost:3000/passwordReset/${id}`,inputdata);
   }
-
 }

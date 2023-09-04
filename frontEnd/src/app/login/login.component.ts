@@ -1,11 +1,10 @@
 import {Component} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr'
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../service/auth.service';
 
 
-/** @title Form field with error messages */
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
