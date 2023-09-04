@@ -6,6 +6,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { HomeComponent } from './home/home.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,9 @@ const routes: Routes = [
   {component:LoginComponent,path:''},
   {component:HomeComponent,path:'home'},
   {component:AdminHomeComponent ,path:'adminHome'},
-  {component:EditUserComponent,path:'editUser/:id'}
+  {component:EditUserComponent,path:'editUser/:id'},
+  {component:PasswordResetComponent,path:'passwordReset'}
+  
 
 ];
 

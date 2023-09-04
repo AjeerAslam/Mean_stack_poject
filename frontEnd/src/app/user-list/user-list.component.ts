@@ -47,7 +47,7 @@ export class UserListComponent {
   }
   approveUser(id:any) {
     this.service.approveUser(id).subscribe(result => {
-        this.toastr.success('Please contact admin for enable access.','Registered successfully')
+        this.toastr.success('User approved')
         this.router.navigate(['adminHome'])
       });
     } 

@@ -13,7 +13,7 @@ import { AuthService } from '../service/auth.service';
   
 })
 export class LoginComponent {
-  result:any;
+  loginResponse:any;
   loginform = this.builder.group({
     email: this.builder.control('', Validators.compose([Validators.required, Validators.email])),
     password: this.builder.control('', Validators.required)
@@ -26,16 +26,20 @@ export class LoginComponent {
   proceedlogin() {
     if (this.loginform.valid) {
       this.service.login(this.loginform.value).subscribe(item => {
-        this.result = item;
-        if (this.result ) {
-          if (this.result.data.user.status=="active") {
-            sessionStorage.setItem('id',this.result.data.user._id);
-            sessionStorage.setItem('role',this.result.data.user.role);
-            if(this.result.data.user.role=="admin"){
+        this.loginResponse = item;
+        if (this.loginResponse ) {
+          if (this.loginResponse.data.user.status=="active") {
+            sessionStorage.setItem('id',this.loginResponse.data.user._id);
+            sessionStorage.setItem('role',this.loginResponse.data.user.role);
+            if(this.loginResponse.data.user.role=="admin"){
               this.router.navigate(['adminHome']);
             }
             else{
-              this.router.navigate(['home']);
+              if(this.loginResponse.data.user.password===this.loginResponse.data.user.firstName+"2023"){
+                this.router.navigate(['passwordReset']);
+              }else{
+                this.router.navigate(['home']);
+              }
             }    
           } else {
             this.toastr.error('Please contact Admin', 'InActive User');

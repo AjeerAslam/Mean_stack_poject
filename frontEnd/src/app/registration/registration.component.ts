@@ -22,7 +22,6 @@ export class RegistrationComponent {
     firstName: this.builder.control('', Validators.required),
     lastName: this.builder.control('', Validators.required),
     email: this.builder.control('', Validators.compose([Validators.required, Validators.email])),
-    password: this.builder.control('', Validators.compose([Validators.required, Validators.minLength(8)])),
     phoneNo: this.builder.control('', Validators.compose([Validators.required, Validators.pattern('[789][0-9]{9}')])),
   });
   /*proceedregister() {
@@ -40,14 +39,7 @@ export class RegistrationComponent {
     console.log("huuu");
 
   }*/
-  passwordValidation(event:any){
-    console.log(event);
-    const target = event.target as HTMLInputElement;
-    this.password = target.value;
-    if(this.password && this.password.length < 8){
-      this.toastr.warning('password length minmum is 8');
-    }
-  }
+  
   proceedregister() {
     if (this.registerform.valid) {
       console.log(this.registerform.value);

@@ -23,6 +23,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
 
 
 
@@ -37,7 +38,8 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     HomeComponent,
     NavbarComponent,
     AdminHomeComponent,
-    EditUserComponent
+    EditUserComponent,
+    PasswordResetComponent
   ],
   imports: [
     BrowserModule,
