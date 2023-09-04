@@ -7,18 +7,17 @@ import { HomeComponent } from './home/home.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
-
+import { adminAuthGuard } from './guard/admin-auth.guard';
+import { userAuthGuard } from './guard/user-auth.guard';
 
 const routes: Routes = [
   {component:RegistrationComponent,path:'signup'},
-  {component:UserListComponent,path:'userList'},
+  {component:UserListComponent,path:'userList',canActivate:[adminAuthGuard]},
   {component:LoginComponent,path:''},
-  {component:HomeComponent,path:'home'},
-  {component:AdminHomeComponent ,path:'adminHome'},
-  {component:EditUserComponent,path:'editUser/:id'},
-  {component:PasswordResetComponent,path:'passwordReset'}
-  
-
+  {component:HomeComponent,path:'home',canActivate:[userAuthGuard]},
+  {component:AdminHomeComponent ,path:'adminHome',canActivate:[adminAuthGuard]},
+  {component:EditUserComponent,path:'editUser/:id',canActivate:[adminAuthGuard]},
+  {component:PasswordResetComponent,path:'passwordReset',canActivate:[userAuthGuard]}
 ];
 
 @NgModule({

@@ -56,7 +56,7 @@ export class EditUserComponent implements OnInit{
           delete this.editData[key];
         }
       }
-      this.service.editUser(this.id,this.editData).subscribe(result => {
+      this.service.editUser(this.id,this.editData).subscribe(() => {
         this.toastr.success('Updated successfully');
         this.router.navigate(['adminHome']);
       });
