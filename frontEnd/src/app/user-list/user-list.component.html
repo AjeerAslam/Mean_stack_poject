@@ -6,7 +6,7 @@
       
     <mat-form-field class="example-form-field">
       <mat-label>Search here</mat-label>
-      <input matInput type="text"  (keyup)='filter($event,selected)'>
+      <input matInput type="text"  (keyup)='filterUsersDataList($event,selected)'>
     </mat-form-field>
     <mat-form-field class="dropDown">
       <mat-label>FilterBy</mat-label>
@@ -19,7 +19,7 @@
   </div>
     <mat-card-content>
         <div class="mat-elevation-z8">
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <table mat-table [dataSource]="userData" class="mat-elevation-z8">
 
                 <!--- Note that these columns can be defined in any order.
                       The actual rendered columns are set as a property on the row definition" -->

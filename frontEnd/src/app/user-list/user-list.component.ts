@@ -1,10 +1,8 @@
+//this compponent loads on admin page for showing user details
 import { Component } from '@angular/core';
 import { AuthService } from '../service/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { filter } from 'rxjs';
-
-
 
 @Component({
   selector: 'app-user-list',
@@ -17,19 +15,20 @@ export class UserListComponent {
   
   
   displayedColumns: string[] = ['firstName', 'lastName', 'email', 'phoneNo','status','approval','delete','edit'];
-  dataSource :any ;
-  userList:any;
-  key:any;
-  dataSourceBackup:any;
+  userData :any ;
+  responseData:any;
+  filterKey:any;
+  userDataBackup:any;//it is used for filtering data in filter function
   selected :string;
   
   constructor(private service:AuthService,private router: Router,
     private toastr: ToastrService){
     this.selected = 'firstName';
-    this.service.getUsers().subscribe(result => {
-      this.userList=result;
-      this.dataSource =this.userList.data.user
-      this.dataSourceBackup=this.dataSource;
+    //api call
+    this.service.getUsers().subscribe(Response => {
+      this.responseData=Response;
+      this.userData =this.responseData.data.user
+      this.userDataBackup=this.userData;
     });  
     
     //this.dataSource=ELEMENT_DATA;
@@ -41,52 +40,51 @@ export class UserListComponent {
       //this.dataSource = new MatTableDataSource(this.userList);
     });   
   }*/
-  filter(event:any,selected:any){
-    console.log(this.dataSource);
+
+  //filter function for keyword search in data from admin page
+  filterUsersDataList(event:any,selected:any){
+    console.log(this.userData);
     const target = event.target as HTMLInputElement;
-    this.key = target.value;
-    const myRegex = new RegExp(`^${this.key}`);
-    this.dataSource = this.dataSourceBackup.filter(function (el:any) {
+    this.filterKey= target.value;
+    const myRegex = new RegExp(`^${this.filterKey}`);
+    this.userData = this.userDataBackup.filter(function (eachRow:any) {
       if (selected=='firstName') {
-        return myRegex.test(el.firstName);
+        return myRegex.test(eachRow.firstName);
       } else {
         if (selected=='lastName') {
-          return myRegex.test(el.lastName);
+          return myRegex.test(eachRow.lastName);
         } else {
-          return myRegex.test(el.email);     
+          return myRegex.test(eachRow.email);     
         }
       }
     });
-    /*
-    this.service.filterUser(this.key).subscribe(result => {
-      this.userList=result;
-      this.dataSource =this.userList.data.user
-      console.log(this.dataSource);
-      this.router.navigate(['adminHome'])
-    });*/
   }
+
+  //approve user function
   approveUser(id:any) {
     this.service.approveUser(id).subscribe(() => {
         this.toastr.success('User approved');
         this.service.getUsers().subscribe(response => {
-          this.userList=response;
-          this.dataSource =this.userList.data.user;
+          this.userData=response;
+          this.userDataBackup =this.userData.data.user;
         });
     });
-  } 
+  }
+  //delete user function
   deleteUser(id:any) {
       console.log(id);
       this.service.deleteUser(id).subscribe(() => {
           this.toastr.success('Deleted successfully')
           this.service.getUsers().subscribe(response => {
-            this.userList=response;
-            this.dataSource =this.userList.data.user;
+            this.userData=response;
+            this.userDataBackup =this.userData.data.user;
           });
         });
       } 
-      editUser(id:any) {
-        this.router.navigate(['/editUser', id]);
-      }
+  //edit user function-it load edit user component
+  editUser(id:any) {
+    this.router.navigate(['/editUser', id]);
+  }
 }
 
 

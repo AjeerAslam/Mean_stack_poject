@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
-import { ToastrModule } from 'ngx-toastr';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'authentication';
+  /*title = 'authentication';
   isadmin=false;
   isMenuVisible=false;
   constructor(private route:Router){
@@ -30,5 +29,5 @@ export class AppComponent {
     }else{
       this.isadmin = false;
     }
-  }
+  }*/
 }

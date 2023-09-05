@@ -1,3 +1,4 @@
+//component loads when admin click edit button
 import { Component,OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,51 +13,43 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./edit-user.component.css']
 })
 export class EditUserComponent implements OnInit{
-  user:any;
-  id:any;
+
+  userData:any;
+  userId:any;
   editData:any;
-  constructor(private builder: FormBuilder, private service: AuthService, private router: Router,
-    private toastr: ToastrService,private http:HttpClient,private route:ActivatedRoute) {   
-  }
-  ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.service.getUser(this.id).subscribe(result=>{
-      this.user=result;
-    }); 
-    console.log(this.user);
-  }
+
+  //form instance creation
   registerform = this.builder.group({
     firstName: this.builder.control(''),
     lastName: this.builder.control(''),
     email: this.builder.control('', Validators.compose([Validators.email])),
     phoneNo: this.builder.control('', Validators.compose([Validators.pattern('[789][0-9]{9}')])),
   });
-  
-  /*proceedregister() {
-    const products={
-      firstName:"ajeer",
-      lastName:"aslam",
-      email:"ajeeraslamkkkffd1@gmail.com",
-      phoneNo:"9744630325",
-      password:"223243"
-    
-    };
-    console.log("hii");
-    this.http.post('http://localhost:3000/signup',products).subscribe(result=>{console.log(result)});
-    //this.http.get('http://localhost:3000/userList').subscribe(result=>{console.log(result)});
-    console.log("huuu");
 
-  }*/
+  constructor(private builder: FormBuilder, private service: AuthService, private router: Router,
+    private toastr: ToastrService,private http:HttpClient,private route:ActivatedRoute) {   
+  }
+
+  ngOnInit() {
+    //api call to get user detais in form for editing
+    this.userId = this.route.snapshot.paramMap.get('id');
+    this.service.getUser(this.userId).subscribe(response=>{
+      this.userData=response;
+    });
+  }
   
+  //To edit user by clicking on edit button from admin page
   editUser() {
     if (this.registerform.valid) {
       this.editData=this.registerform.value;
+      //To remove null objects from form values otherwise it create null values in db
       for (const key in this.editData) {
         if (this.editData[key] == '') {
           delete this.editData[key];
         }
       }
-      this.service.editUser(this.id,this.editData).subscribe(() => {
+      //api call to edit user
+      this.service.editUser(this.userId,this.editData).subscribe(() => {
         this.toastr.success('Updated successfully');
         this.router.navigate(['adminHome']);
       });

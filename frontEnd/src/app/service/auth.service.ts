@@ -1,3 +1,4 @@
+//This service is used to define api calls
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -5,7 +6,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
+
   constructor(private http:HttpClient) { }
+
   registerUser(inputdata:any){
     return this.http.post('http://localhost:3000/signup',inputdata);
   } 
@@ -32,11 +35,13 @@ export class AuthService {
   editUser(id:any,inputdata:any){
     return this.http.patch(`http://localhost:3000/userEdit/${id}`,inputdata);
   }
-  filterUser(id:any){
-    return this.http.get(`http://localhost:3000/filtering/${id}`);
-  }
 
   passwordReset(id:any,inputdata:any){
     return this.http.patch(`http://localhost:3000/passwordReset/${id}`,inputdata);
   }
+
+  /*filterUser(id:any){
+    return this.http.get(`http://localhost:3000/filtering/${id}`);
+  }*/
+
 }

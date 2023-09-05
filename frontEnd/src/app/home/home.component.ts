@@ -1,3 +1,4 @@
+//user home page component-it loads when user login
 import { Component } from '@angular/core';
 
 @Component({

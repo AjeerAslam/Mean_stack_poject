@@ -1,3 +1,4 @@
+//admin home page -this component load when admin login
 import { Component } from '@angular/core';
 
 @Component({

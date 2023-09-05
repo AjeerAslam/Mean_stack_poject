@@ -92,7 +92,7 @@ exports.passwordReset =async (req, res) => {
     });
 };
 
-exports.filtering =async (req, res) => {
+/*exports.filtering =async (req, res) => {
     Regex = new RegExp(`^${req.params.key}`, 'i');
     const Users = await User.find({
         $or: [
@@ -105,5 +105,5 @@ exports.filtering =async (req, res) => {
         status: 'success',
         data: { Users }
     });
-};
+};*/
 

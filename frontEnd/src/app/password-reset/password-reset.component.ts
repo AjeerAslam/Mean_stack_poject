@@ -1,3 +1,4 @@
+//it loads on users first login to reset password
 import {Component} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -10,17 +11,19 @@ import { AuthService } from '../service/auth.service';
   styleUrls: ['./password-reset.component.css']
 })
 export class PasswordResetComponent {
+
   resetResponse:any;
   password:any;
   id:any;
+  //form
   resetform = this.builder.group({
     password: this.builder.control('', Validators.compose([Validators.required, Validators.minLength(8)])),
     confirmPassword: this.builder.control('', Validators.compose([Validators.required, Validators.minLength(8)]))
   });
+
   constructor(private builder: FormBuilder, private toastr: ToastrService, private service: AuthService,
-    private router: Router) {
-      
-  }
+    private router: Router) {   }
+  
   passwordValidation(event:any){
     const target = event.target as HTMLInputElement;
     this.password = target.value;
@@ -32,6 +35,7 @@ export class PasswordResetComponent {
   resetPassword() {
     if (this.resetform.valid && this.resetform.value.password== this.resetform.value.confirmPassword) {
       this.id=sessionStorage.getItem('id');
+      //api call
       this.service.passwordReset(this.id,{password:this.resetform.value.password}).subscribe(item => {
         this.resetResponse = item;
         if (this.resetResponse ) {
