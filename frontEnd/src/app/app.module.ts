@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -24,10 +23,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
-
-
-
-
 
 @NgModule({
   declarations: [
