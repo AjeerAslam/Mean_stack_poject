@@ -1,4 +1,5 @@
-const User = require('../Models/userModel');//dd
+const User = require('../Models/userModel');//dds
+const jwt = require("jsonwebtoken");
 
 //signup api
 exports.signup =async(req, res) => {
@@ -22,9 +23,15 @@ exports.login =async (req, res) => {
     const user = await User.findOne({email: req.body.email, password:req.body.password});
     //1-only active users can login
     //2-authentication
+    token = jwt.sign(
+        { email: user.email, password: user.password },
+        "secretkeyappearshere",
+        { expiresIn: "1h" }
+      );
     if(user){
         res.status(201).json({
             status: 'success',
+            token: token,
             data: { user }
         });
     }else{
