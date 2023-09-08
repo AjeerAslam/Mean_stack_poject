@@ -1,4 +1,4 @@
-const User = require('../Models/userModel');////////////////////jgf
+const User = require('../Models/userModel');////////////////////jgfs
 
 //signup api
 exports.signup =async(req, res) => {
