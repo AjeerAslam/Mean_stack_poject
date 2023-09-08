@@ -51,6 +51,7 @@ exports.login =async (req, res) => {
 exports.userList=async (req, res) => {
     
     const user = await User.find({role:'user'});
+    console.log('user');
     res.status(201).json({
         status: 'success',
         data: { user }

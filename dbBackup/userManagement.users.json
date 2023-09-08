@@ -1,0 +1,193 @@
+[{
+  "_id": {
+    "$oid": "64f0364b836a8f8cbca4f256"
+  },
+  "firstName": "ajeer",
+  "lastName": "aslam",
+  "email": "ajeeraslam@gmail.com",
+  "phoneNo": {
+    "$numberLong": "919744630325"
+  },
+  "password": "12345678",
+  "role": "admin",
+  "status": "active",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64f2c2b3cd019db450dca212"
+  },
+  "firstName": "ajeerd",
+  "lastName": "aslamd",
+  "email": "fggfs@gmail.com",
+  "phoneNo": {
+    "$numberLong": "97446303258"
+  },
+  "password": "223243",
+  "role": "user",
+  "status": "awaitingApproval",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64f2c58ea3f5f4f710031fde"
+  },
+  "firstName": "ajeer",
+  "lastName": "aslam",
+  "email": "fggfedr@gmail.com",
+  "phoneNo": {
+    "$numberLong": "9744630325"
+  },
+  "password": "ajeer2023",
+  "role": "user",
+  "status": "active",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64f320e9af0dc26544d3405a"
+  },
+  "firstName": "ajeer",
+  "lastName": "aslam",
+  "email": "ajeeraslamk3213@gmail.com",
+  "phoneNo": {
+    "$numberLong": "9744630325"
+  },
+  "password": "ajeer2023",
+  "role": "user",
+  "status": "active",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64f324e4af0dc26544d3405e"
+  },
+  "firstName": "ajeer",
+  "lastName": "as",
+  "email": "ajeeraslamk32s213@gmail.com",
+  "phoneNo": {
+    "$numberLong": "9744630325"
+  },
+  "password": "ajeer2023",
+  "role": "user",
+  "status": "active",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64f449c80fc29b83ea3a5574"
+  },
+  "firstName": "aj",
+  "lastName": "ajfsj",
+  "email": "a@gmail.com",
+  "phoneNo": 974430325,
+  "password": "aj2023",
+  "role": "user",
+  "status": "active",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64f4dd958b6cacbbd3115520"
+  },
+  "firstName": "gds",
+  "lastName": "dfgs",
+  "email": "ajeeraslamk34@gmail.com",
+  "phoneNo": {
+    "$numberLong": "9744630325"
+  },
+  "password": "gds2023",
+  "role": "user",
+  "status": "active",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64f4dde28b6cacbbd3115522"
+  },
+  "firstName": "afdaa",
+  "lastName": "sfas",
+  "email": "ajeeraslam4213@gmail.com",
+  "phoneNo": {
+    "$numberLong": "9744630325"
+  },
+  "password": "afdaa2023",
+  "role": "user",
+  "status": "active",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64f55e2555f9d2fb8f455e6e"
+  },
+  "firstName": "ajeer",
+  "lastName": "aslam",
+  "email": "ajeer1234@gmail.com",
+  "phoneNo": {
+    "$numberLong": "9744630325"
+  },
+  "role": "user",
+  "status": "active",
+  "__v": 0,
+  "password": "ajeer123"
+},
+{
+  "_id": {
+    "$oid": "64f593820be4a938b86e3158"
+  },
+  "firstName": "midhun",
+  "lastName": "dev",
+  "email": "midhundev@gmail.com",
+  "phoneNo": {
+    "$numberLong": "9874084839"
+  },
+  "role": "user",
+  "status": "active",
+  "__v": 0,
+  "password": "12345678"
+},
+{
+  "_id": {
+    "$oid": "64f5d68cd6c118a5509437ab"
+  },
+  "firstName": "bijas",
+  "lastName": "k",
+  "email": "bijas@gmail.com",
+  "phoneNo": {
+    "$numberLong": "9874683890"
+  },
+  "role": "user",
+  "status": "active",
+  "__v": 0,
+  "password": "bijas2023"
+},
+{
+  "_id": {
+    "$oid": "64f6b50e8aa45293f0d35e83"
+  },
+  "firstName": "ashuthosh",
+  "lastName": "kumar",
+  "email": "ashuthosh@gmail.com",
+  "phoneNo": {
+    "$numberLong": "9876543324"
+  },
+  "role": "user",
+  "status": "active",
+  "__v": 0,
+  "password": "ashuthosh2023"
+},
+{
+  "_id": {
+    "$oid": "64f71cfc8aa45293f0d35e88"
+  },
+  "firstName": "adwaith",
+  "lastName": "k",
+  "email": "adwaith@gmail.com",
+  "phoneNo": {
+    "$numberLong": "9744630325"
+  },
+  "role": "user",
+  "status": "active",
+  "__v": 0,
+  "password": "Ajk@8522"
+}]
