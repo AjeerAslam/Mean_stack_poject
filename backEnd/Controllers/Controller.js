@@ -1,9 +1,9 @@
 const User = require('../Models/userModel');//dds
 const jwt = require("jsonwebtoken");
 
+
 //signup api
 exports.signup =async(req, res) => {
-    console.log(req.body);
     try{
     const user =  await User.create(req.body);
     res.status(201).json({
@@ -29,9 +29,9 @@ exports.login =async (req, res) => {
         { expiresIn: "1h" }
       );
     if(user){
+        res.cookie("jwt", token,{httpOnly:true});
         res.status(201).json({
             status: 'success',
-            token: token,
             data: { user }
         });
     }else{
@@ -47,11 +47,19 @@ exports.login =async (req, res) => {
         });
     } 
 };
-    
-exports.userList=async (req, res) => {
+
+exports.logout=async (req, res) => {
     
     const user = await User.find({role:'user'});
     console.log('user');
+    res.status(201).json({
+        status: 'success',
+        data: { user }
+    });
+};
+    
+exports.userList=async (req, res) => {
+    const user = await User.find({role:'user'});
     res.status(201).json({
         status: 'success',
         data: { user }

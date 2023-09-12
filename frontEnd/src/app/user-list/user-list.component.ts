@@ -27,8 +27,13 @@ export class UserListComponent {
     //api call
     this.service.getUsers().subscribe(Response => {
       this.responseData=Response;
-      this.userData =this.responseData.data.user
-      this.userDataBackup=this.userData;
+      if(this.responseData?.message){
+        this.toastr.warning('you are not authenticated');
+        this.router.navigate(['']);
+      }else{
+        this.userData =this.responseData.data.user
+        this.userDataBackup=this.userData;
+      }
     });  
     
     //this.dataSource=ELEMENT_DATA;
@@ -62,22 +67,35 @@ export class UserListComponent {
 
   //approve user function
   approveUser(id:any) {
-    this.service.approveUser(id).subscribe(() => {
-        this.toastr.success('User approved');
+    this.service.approveUser(id).subscribe((response) => {
+        this.responseData=response;
+          if(this.responseData?.message){
+            this.toastr.warning('you are not authenticated');
+            this.router.navigate(['']);
+          }else{
+            this.toastr.success('User approved');
+          }
         this.service.getUsers().subscribe(response => {
           this.userData=response;
           this.userDataBackup =this.userData.data.user;
+        
         });
     });
   }
   //delete user function
   deleteUser(id:any) {
       console.log(id);
-      this.service.deleteUser(id).subscribe(() => {
-          this.toastr.success('Deleted successfully')
+      this.service.deleteUser(id).subscribe((response) => {
+        this.responseData=response;
+          if(this.responseData?.message){
+            this.toastr.warning('you are not authenticated');
+            this.router.navigate(['']);
+          }else{
+            this.toastr.success('Deleted successfully')
+          }
           this.service.getUsers().subscribe(response => {
             this.userData=response;
-            this.userDataBackup =this.userData.data.user;
+            this.userDataBackup =this.userData.data.user; 
           });
         });
       } 

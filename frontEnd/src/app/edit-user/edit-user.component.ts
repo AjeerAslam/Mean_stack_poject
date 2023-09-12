@@ -17,6 +17,7 @@ export class EditUserComponent implements OnInit{
   userData:any;
   userId:any;
   editData:any;
+  responseData:any;
 
   //form instance creation
   registerform = this.builder.group({
@@ -49,9 +50,15 @@ export class EditUserComponent implements OnInit{
         }
       }
       //api call to edit user
-      this.service.editUser(this.userId,this.editData).subscribe(() => {
+      this.service.editUser(this.userId,this.editData).subscribe((response) => {
+        this.responseData=response;
+        if(this.responseData?.message){
+          this.toastr.warning('you are not authenticated');
+          this.router.navigate(['']);
+        }else{
         this.toastr.success('Updated successfully');
         this.router.navigate(['adminHome']);
+        }
       });
     } else {
       this.toastr.warning('Please enter valid data.')

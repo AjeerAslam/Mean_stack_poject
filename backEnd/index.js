@@ -11,7 +11,10 @@ mongoose.connect('mongodb://127.0.0.1:27017/userManagement', {
     console.log('Some error has occured');
 });
 
+
+
 //server starting
 app.listen(3000, () => {
     console.log('server has started...');
 });
+
